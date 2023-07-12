@@ -1,11 +1,13 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Avatar} from '@rneui/themed';
-import {TextLink} from '../../../components/Buttons/TextLink';
+import {Avatar, Input} from '@rneui/themed';
 import {BigTitleText} from '../../../components/Text/BigTitleText';
 import {TitleText} from '../../../components/Text/TitleText';
-import {OnSelectedName, ChangeNameDialog} from '../dialogs/ChangeNameDialog';
+
 import {ActionCb} from '../../../types/ActionCb';
+import colors from '../../../styles/colors';
+
+export type OnSelectedName = (name: string) => void;
 
 interface ManageAccountProfilePictureProps {
   imageUri?: string;
@@ -27,10 +29,9 @@ export function ManageAccountProfilePictureDisplay(
   const uri = 'https://uifaces.co/our-content/donated/6MWH9Xi_.jpg';
   return (
     <View style={styles.container}>
-      <View style={styles.titleLine}>
-        <BigTitleText>Profile Picture</BigTitleText>
-        <TextLink text="" textLink="EDIT" onClicked={props.onSelectedImage} />
-      </View>
+      <BigTitleText style={styles.titleLine}>
+        Change profile picture
+      </BigTitleText>
 
       <View style={styles.avatarContainer}>
         <Avatar
@@ -42,9 +43,13 @@ export function ManageAccountProfilePictureDisplay(
 
         <TitleText>{props.nameValue}</TitleText>
 
-        <ChangeNameDialog
-          openBtnTitle="Change name"
-          onSelectedName={props.onSelectedName}
+        <Input
+          label="Name"
+          value={props.nameValue}
+          onChangeText={props.onSelectedName}
+          placeholder="Enter name..."
+          inputContainerStyle={styles.input}
+          renderErrorMessage={false}
         />
       </View>
     </View>
@@ -55,13 +60,14 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   titleLine: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    alignSelf: 'center',
   },
   avatarContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     gap: 8,
+  },
+  input: {
+    backgroundColor: colors.mediumBlack,
   },
 });

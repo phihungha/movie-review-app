@@ -74,7 +74,7 @@ export function MyAccountStackScreen(): React.JSX.Element {
         />
         <MyAccountStackNavigator.Screen
           name="ManageAccountInfo"
-          options={{headerTitle: '', animation: 'slide_from_right'}}
+          options={{title: 'Edit account', animation: 'slide_from_right'}}
           component={ManageAccountInfo}
         />
       </MyAccountStackNavigator.Group>

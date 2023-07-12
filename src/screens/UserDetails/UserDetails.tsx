@@ -14,10 +14,10 @@ import {RegularText} from '../../components/Text/RegularText';
 import colors from '../../styles/colors';
 import {SmallSectionText} from '../../components/Text/SmallSectionText';
 import {Button, Icon} from '@rneui/themed';
-import {UrlLinkText} from '../../components/Text/UrlLinkText';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {MainStackParams} from '../../navigators/MainStackParams';
 import {UserWatchedOverviewList} from './components/UserWatchedOverviewList';
+import {TextLink} from '../../components/Text/TextLink';
 
 export const UserDetailsQuery = graphql`
   query UserDetailsQuery($id: ID!) {
@@ -211,9 +211,12 @@ export function LinkInfoSection({name, value, icon}: InfoSectionProps) {
     <View style={styles.infoSection}>
       <View style={styles.icon}>{icon}</View>
       <SmallSectionText>{name}:</SmallSectionText>
-      <UrlLinkText onPress={() => (value ? Linking.openURL(value) : undefined)}>
-        {value}
-      </UrlLinkText>
+      <TextLink
+        onPress={() => (value ? Linking.openURL(value) : undefined)}
+        text={''}
+        textLink={value!}
+        isUnderline={true}
+      />
     </View>
   );
 }

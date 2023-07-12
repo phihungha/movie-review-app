@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {Button, Input} from '@rneui/themed';
 import {TitleBlock} from '../components/Display/TitleBlock';
-import {TextLink} from '../components/Buttons/TextLink';
+import {TextLink} from '../components/Text/TextLink';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../navigators/RootStackNavigator';
 import auth from '@react-native-firebase/auth';
@@ -50,6 +50,7 @@ export function LoginScreen({navigation}: LoginScreenProps) {
           text="Don't have an account? "
           textLink="Sign up now"
           onClicked={() => navigation.navigate('SignUp')}
+          isUnderline={false}
         />
       </View>
     </SafeAreaView>

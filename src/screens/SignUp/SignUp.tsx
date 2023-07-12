@@ -3,7 +3,7 @@ import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import {Button, Input} from '@rneui/themed';
 import {TitleBlock} from '../../components/Display/TitleBlock';
 
-import {TextLink} from '../../components/Buttons/TextLink';
+import {TextLink} from '../../components/Text/TextLink';
 import {DatePickerDialog} from '../../dialogs/DatePickerDialog';
 import colors from '../../styles/colors';
 import {ItemTitleOnly} from '../../components/Items/BottomSheetListItem';
@@ -120,6 +120,7 @@ export function SignUpScreen({navigation}: Props): JSX.Element {
             text="Already have an account, "
             textLink="login"
             onClicked={navigateToLoginScreen}
+            isUnderline={false}
           />
         </View>
         <View style={styles.space} />

@@ -10,9 +10,7 @@ import {
 
 export function ManageAccountInfo(): JSX.Element {
   const [birthdayText, setBirthdayText] = useState('');
-  const [country, setCountry] = useState('');
-  const [type, setType] = useState('');
-  const [favoriteGenre, setFavoriteGenre] = useState('');
+  const [genderValue, setGenderValue] = useState('');
   const [name, setName] = useState('Name');
   const [uri, setUri] = useState('');
 
@@ -35,14 +33,9 @@ export function ManageAccountInfo(): JSX.Element {
   const onSelectedName = (selectedName: string) => {
     setName(selectedName);
   };
-  const onSelectedCountry = (item: any) => {
-    setCountry(item.title);
-  };
-  const onSelectedType = (item: any) => {
-    setType(item.title);
-  };
-  const onSelectedFavoriteGenre = (item: any) => {
-    setFavoriteGenre(item.title);
+
+  const onSelectedGender = (selectedGender: any) => {
+    setGenderValue(selectedGender);
   };
   const onSelectedBirthday = (date: any) => {
     let tempDate = new Date(date);
@@ -55,6 +48,14 @@ export function ManageAccountInfo(): JSX.Element {
       tempDate.getFullYear();
     setBirthdayText(dateToText);
   };
+
+  const onSaveInfo = () => {
+    console.log('Call API');
+    console.log(uri);
+    console.log(name);
+    console.log(genderValue);
+    console.log(birthdayText);
+  };
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
@@ -65,16 +66,11 @@ export function ManageAccountInfo(): JSX.Element {
           onSelectedImage={onPressImage}
         />
         <ManageAccountInformationDisplay
-          countryValue={country}
-          typeValue={type}
-          favoriteGenreValue={favoriteGenre}
           birthdayValue={birthdayText}
-          onSelectedCountry={onSelectedCountry}
-          onSelectedType={onSelectedType}
-          onSelectedFavoriteGenre={onSelectedFavoriteGenre}
           onSelectedDate={onSelectedBirthday}
+          onSelectedGender={onSelectedGender}
         />
-        <Button>Save</Button>
+        <Button onPress={onSaveInfo}>Save</Button>
       </ScrollView>
     </View>
   );

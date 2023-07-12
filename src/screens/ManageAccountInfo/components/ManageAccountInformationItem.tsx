@@ -6,25 +6,23 @@ import colors from '../../../styles/colors';
 import {ItemTitleOnly} from '../../../components/Items/BottomSheetListItem';
 import {DatePickerDialog} from '../../../dialogs/DatePickerDialog';
 
-export type OnSelectedManageInformation = (item: Date | ItemTitleOnly) => void;
+export type OnSelectedManageInformation = (
+  item: Date | ItemTitleOnly | string,
+) => void;
 interface ManageItemProps {
-  title: string;
   value: string;
   rightIconComponent: React.ReactElement<{}>;
 }
 
 /**
  * @using general component for information item in ManageAccountInfo Screen
- * @param {string} title title
  * @param {string} value value want to show
  * @param {React.ReactElement<{}>} rightIconComponent the icon button in the right, it handle event to select many option
  */
 export function ManageItem(props: ManageItemProps): JSX.Element {
   return (
     <View style={styles.container}>
-      <RegularText>
-        {props.title}: {props.value}
-      </RegularText>
+      <RegularText>{props.value}</RegularText>
       {props.rightIconComponent}
     </View>
   );
@@ -47,7 +45,6 @@ interface ManageListItemProps {
 export function ManageBirthdayItem(props: ManageListItemProps): JSX.Element {
   return (
     <ManageItem
-      title="Birthday"
       value={props.value}
       rightIconComponent={
         <DatePickerDialog
